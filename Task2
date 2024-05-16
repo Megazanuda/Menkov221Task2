@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+class Animal {
+protected:
+    std::string name;
+public:
+    Animal(const std::string& name) : name(name) {}
+
+    virtual void Voice() const {
+        std::cout << "Animal " << name << " makes a sound." << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    Dog(const std::string& name) : Animal(name) {}
+    void Voice() const override {
+        std::cout << "Dog " << name << " barks." << std::endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    Cat(const std::string& name) : Animal(name) {}
+    void Voice() const override {
+        std::cout << "Cat " << name << " meows." << std::endl;
+    }
+};
+
+int main() {
+    Animal* animal = new Animal("Fluffy");
+    Dog* dog = new Dog("Spot");
+    Cat* cat = new Cat("Whiskers");
+    animal->Voice();
+    dog->Voice();
+    cat->Voice();
+    return 0;
+}
